@@ -86,17 +86,17 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/">
                   <Typography textAlign="center">Home</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/about">
                   <Typography textAlign="center">About</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/contact">
                   <Typography textAlign="center">Contact Us</Typography>
                 </Link>
@@ -170,17 +170,17 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Link to="/user/profile">
                   <Typography textAlign="center">Profile</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Link to="/user/dashboard">
                   <Typography textAlign="center">Dashboard</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Link to="/user/login">
                   <Typography textAlign="center">Logout</Typography>
                 </Link>
