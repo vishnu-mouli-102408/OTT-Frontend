@@ -181,7 +181,7 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/login">
+                <Link to="/user/login">
                   <Typography textAlign="center">Logout</Typography>
                 </Link>
               </MenuItem>

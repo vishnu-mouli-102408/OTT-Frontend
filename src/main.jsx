@@ -14,40 +14,46 @@ import Contact from "./components/Contact.jsx";
 import Home from "./components/Home.jsx";
 import Profile from "./pages/User/Profile.jsx";
 import Dashboard from "./pages/User/Dashboard.jsx";
+import Auth from "./components/Auth.jsx";
 
 const appRouter = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    element: <Auth />,
     children: [
       {
         path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/user/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/user/dashboard",
-        element: <Dashboard />,
+        element: <App />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+          {
+            path: "/about",
+            element: <About />,
+          },
+          {
+            path: "/contact",
+            element: <Contact />,
+          },
+          {
+            path: "/user/profile",
+            element: <Profile />,
+          },
+          {
+            path: "/user/dashboard",
+            element: <Dashboard />,
+          },
+        ],
       },
     ],
   },
   {
-    path: "/login",
+    path: "/user/login",
     element: <SignIn />,
   },
   {
-    path: "/signup",
+    path: "/user/signup",
     element: <SignUp />,
   },
 ]);
