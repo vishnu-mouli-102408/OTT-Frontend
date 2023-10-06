@@ -39,24 +39,23 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Link to="/">
-            <Typography
-              variant="h6"
-              // noWrap
-              // component="a"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
-            </Typography>
-          </Link>
+          <Typography
+            variant="h6"
+            // noWrap
+            component={Link}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -86,20 +85,22 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/">
-                  <Typography textAlign="center">Home</Typography>
-                </Link>
+              <MenuItem onClick={handleCloseNavMenu} component={Link} to={"/"}>
+                <Typography textAlign="center">Home</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/about">
-                  <Typography textAlign="center">About</Typography>
-                </Link>
+              <MenuItem
+                onClick={handleCloseNavMenu}
+                component={Link}
+                to={"/about"}
+              >
+                <Typography textAlign="center">About</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/contact">
-                  <Typography textAlign="center">Contact Us</Typography>
-                </Link>
+              <MenuItem
+                onClick={handleCloseNavMenu}
+                component={Link}
+                to={"/contact"}
+              >
+                <Typography textAlign="center">Contact Us</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -115,37 +116,42 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "primary.dark",
               textDecoration: "none",
             }}
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link to="/">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Home
-              </Button>
-            </Link>
-            <Link to="/about">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                About Us
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Contact Us
-              </Button>
-            </Link>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              component={Link}
+              to="/"
+            >
+              Home
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              component={Link}
+              to="/about"
+            >
+              About Us
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              component={Link}
+              to="/contact"
+            >
+              Contact Us
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -170,20 +176,32 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Link to="/user/profile">
-                  <Typography textAlign="center">Profile</Typography>
-                </Link>
+              <MenuItem
+                onClick={handleCloseUserMenu}
+                component={Link}
+                to={"/user/profile"}
+              >
+                {/* <Link to="/user/profile" sx={{ textDecoration: "none" }}> */}
+                <Typography textAlign="center">Profile</Typography>
+                {/* </Link> */}
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Link to="/user/dashboard">
-                  <Typography textAlign="center">Dashboard</Typography>
-                </Link>
+              <MenuItem
+                onClick={handleCloseUserMenu}
+                component={Link}
+                to={"/user"}
+              >
+                {/* <Link to="/user"> */}
+                <Typography textAlign="center">Dashboard</Typography>
+                {/* </Link> */}
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Link to="/user/login">
-                  <Typography textAlign="center">Logout</Typography>
-                </Link>
+              <MenuItem
+                onClick={handleCloseUserMenu}
+                component={Link}
+                to={"/user/login"}
+              >
+                {/* <Link to="/user/login"> */}
+                <Typography textAlign="center">Logout</Typography>
+                {/* </Link> */}
               </MenuItem>
             </Menu>
           </Box>
