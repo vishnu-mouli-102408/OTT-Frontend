@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+import "../src/Styles/flex.css";
 import "./index.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -11,11 +12,13 @@ import SignIn from "./pages/User/SignIn.jsx";
 import SignUp from "./pages/User/SignUp.jsx";
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
-import Home from "./components/Home.jsx";
+import Home from "./components/Home/Home.jsx";
 import Profile from "./pages/User/Profile.jsx";
 import Dashboard from "./pages/User/Dashboard.jsx";
 import Auth from "./components/Auth.jsx";
-
+import SpecifiVideo from "./components/SpecifiVideo/SpecifiVideo.jsx";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
 const appRouter = createBrowserRouter([
   {
     element: <Auth />,
@@ -44,6 +47,10 @@ const appRouter = createBrowserRouter([
             path: "/user/dashboard",
             element: <Dashboard />,
           },
+          {
+            path: "/video/:id",
+            element: <SpecifiVideo />,
+          },
         ],
       },
     ],
@@ -59,7 +66,9 @@ const appRouter = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={appRouter} />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <RouterProvider router={appRouter} />
+    </React.StrictMode>
+  </Provider>
 );
