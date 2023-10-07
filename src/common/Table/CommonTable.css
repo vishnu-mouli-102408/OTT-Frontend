@@ -1,0 +1,29 @@
+.commonTabRow {
+  .css-1ex1afd-MuiTableCell-root {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 500; */
+    color: black;
+  }
+}
+.tabHead {
+  .css-1ygcj2i-MuiTableCell-root {
+    color: #ffffff;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 560;
+  }
+}
+
+.actionItem-margin {
+  margin-left: 4px !important;
+}
+
+.acceptVideo {
+  background-color: green !important;
+  color: white !important;
+}
+.rejectVideo {
+  background-color: red !important;
+  color: white !important;
+}

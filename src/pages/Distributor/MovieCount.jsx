@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MovieDetails from "./MovieDetails";
+import VideoTable from "./Videos";
+import "./MovieCount.css";
 
 export default function MovieCount() {
   const [value, setValue] = React.useState("1");
@@ -14,7 +16,7 @@ export default function MovieCount() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", padding: "0px" }}>
       <CssBaseline />
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -52,7 +54,8 @@ export default function MovieCount() {
           <MovieDetails />
         </TabPanel>
         <TabPanel value="3">
-          <MovieDetails />
+          {/* <MovieDetails /> */}
+          <VideoTable />
         </TabPanel>
       </TabContext>
     </Box>

@@ -1,0 +1,29 @@
+/* .eachInput {
+  height: 70px;
+  width: 70px !important;
+  border-radius: 8px;
+} */
+
+.otptitle {
+  font-size: 18px;
+  font-family: "Roboto";
+  /* font-weight: 500; */
+  /* color: #060606; */
+  margin-bottom: 10px;
+}
+
+.resendbutton {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.mainContainer {
+  /* background-color: rgb(113, 113, 236); */
+  height: 100vh;
+  /* padding: 20px; */
+  margin: 0px;
+}
+
+.signinBtn {
+  width: 100%;
+}

@@ -7,7 +7,11 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import SignIn from "./pages/User/SignIn.jsx";
 import SignUp from "./pages/User/SignUp.jsx";
 import About from "./components/About.jsx";
@@ -26,6 +30,12 @@ import UserDetails from "./pages/SuperAdmin/UserDetails.jsx";
 import AddMovie from "./pages/Distributor/AddMovie.jsx";
 import MovieCount from "./pages/Distributor/MovieCount.jsx";
 import VideoLayout from "./components/VideoLayout.jsx";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import {
+  adminSidebardata,
+  distributorData,
+} from "./components/Sidebar/Sidebardata.jsx";
+import OTPScreen from "./components/OtpPage/OTP.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -65,19 +75,40 @@ const appRouter = createBrowserRouter([
           },
           {
             path: "/admin",
-            element: <Dashboard />,
+            element: <Navigate to="/admin/distributors" />,
           },
           {
-            path: "/admin/distributorcount",
-            element: <DistributorDetails />,
+            path: "/admin/distributors",
+            element: (
+              <div style={{ height: "90vh" }} className="flex-row">
+                <Sidebar SidebarData={adminSidebardata} />
+                <div style={{ overflow: "auto", width: "100%" }}>
+                  <DistributorDetails />
+                </div>
+              </div>
+            ),
           },
           {
-            path: "/admin/moviecount",
-            element: <MovieDetails />,
+            path: "/admin/movies",
+            element: (
+              <div style={{ height: "90vh" }} className="flex-row">
+                <Sidebar SidebarData={adminSidebardata} />
+                <div style={{ overflow: "auto", width: "100%" }}>
+                  <MovieCount />
+                </div>
+              </div>
+            ),
           },
           {
-            path: "/admin/usercount",
-            element: <UserDetails />,
+            path: "/admin/users",
+            element: (
+              <div style={{ height: "90vh" }} className="flex-row">
+                <Sidebar SidebarData={adminSidebardata} />
+                <div style={{ overflow: "auto", width: "100%" }}>
+                  <UserDetails />
+                </div>
+              </div>
+            ),
           },
           {
             path: "/distributor/addmovie",
@@ -85,7 +116,14 @@ const appRouter = createBrowserRouter([
           },
           {
             path: "/distributor/movies",
-            element: <MovieCount />,
+            element: (
+              <div style={{ height: "90vh" }} className="flex-row">
+                <Sidebar SidebarData={distributorData} />
+                <div style={{ overflow: "auto", width: "100%" }}>
+                  <MovieCount />
+                </div>
+              </div>
+            ),
           },
         ],
       },
@@ -94,6 +132,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/user/login",
     element: <SignIn />,
+  },
+  {
+    path: "/login/otp",
+    element: <OTPScreen />,
   },
   {
     path: "/user/signup",

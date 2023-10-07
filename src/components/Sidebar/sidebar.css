@@ -11,23 +11,34 @@
 .sidebaritem {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 14px;
+  padding: 10px;
   color: #231f20;
   padding: 12px;
   cursor: pointer;
 }
-
+.sidebaritem:hover {
+  background-color: rgb(208, 216, 226);
+}
 .contact-us {
   font-size: 24px;
   font-weight: bold;
 }
 .footer-text {
-  font-size: 18px;
+  font-size: 14px;
+  font-family: "Roboto";
+  color: #606060;
 }
 .contactus {
-  padding: 10px !important;
+  font-size: 18px !important;
+  font-family: "Roboto" !important;
+  font-weight: 500 !important;
+  padding-left: 12px;
 }
 
 .selected {
   background-color: rgb(203, 213, 225);
+}
+.link {
+  text-decoration: none;
+  font-size: 18px !important;
 }
