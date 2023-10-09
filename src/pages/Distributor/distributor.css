@@ -1,3 +1,7 @@
 .sidebarD {
   padding-top: 10px;
 }
+
+.MuiInputLabel-root {
+  color: aqua !important;
+} 

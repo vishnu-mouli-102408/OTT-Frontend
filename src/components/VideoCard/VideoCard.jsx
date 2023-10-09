@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./VideoCard.css";
 import { Link } from "react-router-dom";
 const VideoCard = ({ item }) => {
@@ -21,7 +22,7 @@ const VideoCard = ({ item }) => {
             width={30}
             style={{ margin: "20px" }}
           />
-          <div>{item.title}</div>
+          <div className="m-auto">{item.title}</div>
         </div>
         <div className="flex-row flex-end subtitle">
           <div style={{ marginRight: "10px" }}>{item.view_count}</div>

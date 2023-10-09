@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import OtpInput from "react-otp-input";
 import "./OTP.css";
 import { Button, Paper } from "@mui/material";
-import KeyIcon from "@mui/icons-material/Key";
+// import KeyIcon from "@mui/icons-material/Key";
 const OTPScreen = () => {
   const [otp, setOtp] = useState("");
   return (
-    <div className="flex-center justify-content-center mainContainer ">
-      <Paper style={{ maxWidth: "800px", padding: "50px" }}>
+    <div className="flex-center justify-content-center mainContainer bg-image">
+      <Paper
+        style={{
+          maxWidth: "800px",
+          padding: "50px",
+          color: "#f7f7f2",
+          backgroundColor: "#000000",
+          border: "1px solid #222028",
+        }}
+      >
         <div
-          className="flex-column align-items-center"
-          style={{ margin: "10px" }}
+          className="flex-column align-items-center "
+          style={{ margin: "20px" }}
         >
           <img
             src="https://agent.mobisafar.com/MOBISAFAR/Images/WebSite/password.png"
@@ -39,11 +47,15 @@ const OTPScreen = () => {
             <input
               {...props}
               style={{
-                width: `${90 / 6}%`,
+                width: `${78 / 6}%`,
                 height: "65px",
                 borderRadius: "10px",
                 fontSize: "20px",
                 textAlign: "center",
+                backgroundColor: "#e31da",
+                background: "transparent",
+                border: "2px solid #bb8a33",
+                color: "white",
               }}
             />
           )}
