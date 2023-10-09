@@ -38,19 +38,19 @@ export default function TabsItem() {
             <Tab
               label="Accepted Movies"
               value="1"
-              icon={<CheckIcon fontSize="large" />}
+              icon={<CheckIcon fontSize="large" color="success" />}
               iconPosition="start"
             ></Tab>
             <Tab
               label="Pending Movies"
               value="2"
-              icon={<AutorenewIcon fontSize="large" />}
+              icon={<AutorenewIcon fontSize="large" color="warning" />}
               iconPosition="start"
             ></Tab>
             <Tab
               label="Rejected Movies"
               value="3"
-              icon={<CancelIcon fontSize="large" />}
+              icon={<CancelIcon fontSize="large" style={{ color: "red" }} />}
               iconPosition="start"
             ></Tab>
           </TabList>

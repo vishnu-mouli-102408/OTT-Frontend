@@ -8,7 +8,10 @@ const MovieCount = () => {
     { id: "uploadedAt", label: "Uploaded At" },
     { id: "category", label: "Category" },
     { id: "movieLength", label: "Movie Length (min)" },
-    { id: "action", label: "ACTION" },
+    {
+      id: "action",
+      label: "ACTIONS",
+    },
   ];
 
   const movieData = [
@@ -51,6 +54,38 @@ const MovieCount = () => {
       uploadedAt: "2023-10-25",
       category: "Romance",
       movieLength: 128,
+    },
+    {
+      id: 6,
+      movieName: "Movie F",
+      uploadedBy: "User6",
+      uploadedAt: "2023-10-28",
+      category: "Thriller",
+      movieLength: 145,
+    },
+    {
+      id: 6,
+      movieName: "Movie F",
+      uploadedBy: "User6",
+      uploadedAt: "2023-10-28",
+      category: "Thriller",
+      movieLength: 145,
+    },
+    {
+      id: 6,
+      movieName: "Movie F",
+      uploadedBy: "User6",
+      uploadedAt: "2023-10-28",
+      category: "Thriller",
+      movieLength: 145,
+    },
+    {
+      id: 6,
+      movieName: "Movie F",
+      uploadedBy: "User6",
+      uploadedAt: "2023-10-28",
+      category: "Thriller",
+      movieLength: 145,
     },
     {
       id: 6,

@@ -37,6 +37,7 @@ import {
 } from "./components/Sidebar/Sidebardata.jsx";
 import OTPScreen from "./components/OtpPage/OTP.jsx";
 import TabsItem from "./pages/Distributor/TabsItem.jsx";
+import UploadVideo from "./components/VideoUploading/UploadVideo.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -81,7 +82,7 @@ const appRouter = createBrowserRouter([
           {
             path: "/admin/distributors",
             element: (
-              <div style={{ height: "90vh" }} className="flex-row">
+              <div style={{ height: "100vh" }} className="flex-row">
                 <Sidebar SidebarData={adminSidebardata} />
                 <div style={{ overflow: "auto", width: "100%" }}>
                   <DistributorDetails />
@@ -92,7 +93,7 @@ const appRouter = createBrowserRouter([
           {
             path: "/admin/movies",
             element: (
-              <div style={{ height: "90vh" }} className="flex-row">
+              <div style={{ height: "100vh" }} className="flex-row">
                 <Sidebar SidebarData={adminSidebardata} />
                 <div style={{ overflow: "auto", width: "100%" }}>
                   <MovieCount />
@@ -103,7 +104,7 @@ const appRouter = createBrowserRouter([
           {
             path: "/admin/users",
             element: (
-              <div style={{ height: "90vh" }} className="flex-row">
+              <div style={{ height: "100vh" }} className="flex-row">
                 <Sidebar SidebarData={adminSidebardata} />
                 <div style={{ overflow: "auto", width: "100%" }}>
                   <UserDetails />
@@ -118,7 +119,7 @@ const appRouter = createBrowserRouter([
           {
             path: "/distributor/movies",
             element: (
-              <div style={{ height: "90vh" }} className="flex-row">
+              <div style={{ height: "100vh" }} className="flex-row">
                 <Sidebar SidebarData={distributorData} />
                 <div style={{ overflow: "auto", width: "100%" }}>
                   <TabsItem />
@@ -145,6 +146,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/video/123",
     element: <VideoLayout />,
+  },
+  {
+    path: "/uploadVideo",
+    element: <UploadVideo />,
   },
 ]);
 
