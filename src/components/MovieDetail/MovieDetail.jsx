@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import CoverImage from "../../assets/covers/cover5.png";
-import ReactPlayer from "react-player";
 import "../../pages/css/details.css";
 import user from "../../assets/user.svg";
 import Cover from "../../assets/covers/cover.png";
@@ -12,6 +11,7 @@ import Project3 from "../../assets/gallery/project-3.jpg";
 import Project4 from "../../assets/gallery/project-4.jpg";
 import Project5 from "../../assets/gallery/project-5.jpg";
 import Project6 from "../../assets/gallery/project-6.jpg";
+import VideoLayout from "../VideoLayout";
 // import VideoLayout from "../VideoLayout";
 
 const MovieDetail = () => {
@@ -75,8 +75,7 @@ const MovieDetail = () => {
           </div>
         </div>
         <div>
-          {/* <ReactPlayer url="https://www.youtube.com/watch?v=LXb3EKWsInQ" /> */}
-          {/* <VideoLayout /> */}
+          <VideoLayout />
         </div>
       </div>
       <div className="content">
@@ -413,10 +412,6 @@ const MovieDetail = () => {
               </div>
             </div>
           </div>
-          <ReactPlayer
-            url="https://d2aq68l8afi62p.cloudfront.net/prakash/sample_video.mp4"
-            controls={true}
-          />
         </div>
       </div>
     </div>

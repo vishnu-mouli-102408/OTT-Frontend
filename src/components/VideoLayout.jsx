@@ -4,6 +4,8 @@ const VideoLayout = () => {
   const options = {
     autoplay: false,
     controls: true,
+    width: "100px",
+    height: "100px",
     controlBar: {
       skipButtons: {
         backward: 10,
