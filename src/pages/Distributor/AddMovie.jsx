@@ -17,7 +17,7 @@ import {
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { distributorData } from "../../components/Sidebar/Sidebardata";
 import "./distributor.css";
-import Background from "./section.jpg";
+// import Background from "./section.jpg";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -34,7 +34,7 @@ const VisuallyHiddenInput = styled("input")({
 const AddMovie = () => {
   return (
     <>
-      <div className="flex-row" style={{ height: "90vh" }}>
+      <div className="flex-row" style={{ height: "100vh" }}>
         <Sidebar SidebarData={distributorData} />
         <div style={{ overflow: "auto", width: "100%" }}>
           <CssBaseline />
@@ -42,8 +42,8 @@ const AddMovie = () => {
             style={{
               padding: "50px",
               color: "#f7f7f2",
-              // backgroundColor: "#000000",
-              backgroundImage: `url(${Background})`,
+              backgroundColor: "#000000",
+              // backgroundImage: `url(${Background})`,
               backgroundSize: "cover",
               border: "1px solid #222028",
             }}

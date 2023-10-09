@@ -14,8 +14,8 @@ import {
 } from "react-router-dom";
 import SignIn from "./pages/User/SignIn.jsx";
 import SignUp from "./pages/User/SignUp.jsx";
-import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+import About from "./components/About/About.jsx";
+import Contact from "./components/Contact/Contact.jsx";
 import Home from "./components/Home/Home.jsx";
 import Profile from "./pages/User/Profile.jsx";
 import Dashboard from "./pages/SuperAdmin/AdminDashboard.jsx";
@@ -36,6 +36,8 @@ import {
 } from "./components/Sidebar/Sidebardata.jsx";
 import OTPScreen from "./components/OtpPage/OTP.jsx";
 import TabsItem from "./pages/Distributor/TabsItem.jsx";
+import Privacy from "./pages/Privacy/Privacy.jsx";
+import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ const appRouter = createBrowserRouter([
             element: <Contact />,
           },
           {
+            path: "/privacy",
+            element: <Privacy />,
+          },
+          {
+            path: "/detail",
+            element: <MovieDetail />,
+          },
+          {
             path: "/user/profile",
             element: <Profile />,
           },
@@ -69,65 +79,65 @@ const appRouter = createBrowserRouter([
             path: "/video/:id",
             element: <SpecifiVideo />,
           },
-          {
-            path: "/distributor",
-            element: <DistributorDashboard />,
-          },
-          {
-            path: "/admin",
-            element: <Navigate to="/admin/distributors" />,
-          },
-          {
-            path: "/admin/distributors",
-            element: (
-              <div style={{ height: "90vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <DistributorDetails />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/admin/movies",
-            element: (
-              <div style={{ height: "90vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <MovieCount />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/admin/users",
-            element: (
-              <div style={{ height: "90vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <UserDetails />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/distributor/addmovie",
-            element: <AddMovie />,
-          },
-          {
-            path: "/distributor/movies",
-            element: (
-              <div style={{ height: "90vh" }} className="flex-row">
-                <Sidebar SidebarData={distributorData} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <TabsItem />
-                </div>
-              </div>
-            ),
-          },
         ],
       },
     ],
+  },
+  {
+    path: "/distributor",
+    element: <DistributorDashboard />,
+  },
+  {
+    path: "/distributor/addmovie",
+    element: <AddMovie />,
+  },
+  {
+    path: "/distributor/movies",
+    element: (
+      <div style={{ height: "90vh" }} className="flex-row">
+        <Sidebar SidebarData={distributorData} />
+        <div style={{ overflow: "auto", width: "100%" }}>
+          <TabsItem />
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/admin",
+    element: <Navigate to="/admin/distributors" />,
+  },
+  {
+    path: "/admin/distributors",
+    element: (
+      <div style={{ height: "90vh" }} className="flex-row">
+        <Sidebar SidebarData={adminSidebardata} />
+        <div style={{ overflow: "auto", width: "100%" }}>
+          <DistributorDetails />
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/admin/movies",
+    element: (
+      <div style={{ height: "90vh" }} className="flex-row">
+        <Sidebar SidebarData={adminSidebardata} />
+        <div style={{ overflow: "auto", width: "100%" }}>
+          <MovieCount />
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/admin/users",
+    element: (
+      <div style={{ height: "90vh" }} className="flex-row">
+        <Sidebar SidebarData={adminSidebardata} />
+        <div style={{ overflow: "auto", width: "100%" }}>
+          <UserDetails />
+        </div>
+      </div>
+    ),
   },
   {
     path: "/user/login",
