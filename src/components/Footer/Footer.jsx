@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="shadow py-4 ">
+    <div
+      className="shadow py-4 "
+      style={{ paddingLeft: "25px", paddingRight: "25px" }}
+    >
       <div className="flex items-center justify-between">
         <div className="text-sm opacity-70">
           © 8G, 2023-2024 <br />
