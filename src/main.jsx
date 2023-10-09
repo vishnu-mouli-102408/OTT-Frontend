@@ -25,7 +25,6 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import DistributorDashboard from "./pages/Distributor/DistributorDashboard.jsx";
 import DistributorDetails from "./pages/SuperAdmin/DistributorDetails.jsx";
-import MovieDetails from "./pages/SuperAdmin/MovieDetails.jsx";
 import UserDetails from "./pages/SuperAdmin/UserDetails.jsx";
 import AddMovie from "./pages/Distributor/AddMovie.jsx";
 import MovieCount from "./pages/Distributor/MovieCount.jsx";

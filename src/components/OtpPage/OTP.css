@@ -13,8 +13,14 @@
 }
 
 .resendbutton {
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  border-radius: 6px !important;
+  background-color: transparent !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  border: 2px solid #bb8a33 !important;
 }
 
 .mainContainer {
@@ -26,4 +32,21 @@
 
 .signinBtn {
   width: 100%;
+  border-radius: 6px !important;
+  background-color: transparent !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  border: 2px solid #bb8a33 !important;
 }
+
+.bg-image{
+  background-image: url("./section.jpg");
+  background-size: cover;
+}
+
+.c-center{
+  justify-content: center;
+}
+
+

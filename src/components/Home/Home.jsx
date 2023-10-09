@@ -11,7 +11,7 @@ export default function Home() {
       <Box sx={{ display: { xs: "none", md: "flex" } }}>
         <Sidebar SidebarData={SidebarData} />
       </Box>
-      <div className="flex-row flex-wrap videoContent">
+      <div className="flex-row flex-wrap videoContent justify-content-center">
         {videodata.map((video) => (
           <VideoCard item={video} />
         ))}
