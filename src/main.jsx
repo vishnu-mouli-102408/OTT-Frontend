@@ -35,6 +35,7 @@ import {
   distributorData,
 } from "./components/Sidebar/Sidebardata.jsx";
 import OTPScreen from "./components/OtpPage/OTP.jsx";
+import TabsItem from "./pages/Distributor/TabsItem.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -119,7 +120,7 @@ const appRouter = createBrowserRouter([
               <div style={{ height: "90vh" }} className="flex-row">
                 <Sidebar SidebarData={distributorData} />
                 <div style={{ overflow: "auto", width: "100%" }}>
-                  <MovieCount />
+                  <TabsItem />
                 </div>
               </div>
             ),

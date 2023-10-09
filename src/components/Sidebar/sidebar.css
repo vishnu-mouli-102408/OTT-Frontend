@@ -1,7 +1,8 @@
 .sidebarmenu {
   width: 280px;
-  height: 90vh;
-  background-color: rgb(241, 245, 249);
+  height: 100vh;
+  /* background-color: rgb(241, 245, 249); */
+  background-color: #000;
   display: flex;
   flex-direction: column;
   padding: 0px;
@@ -9,36 +10,41 @@
 }
 
 .sidebaritem {
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-family: "Source Sans Pro", sans-serif;
   padding: 10px;
-  color: #231f20;
+  color: #ffffff;
   padding: 12px;
   cursor: pointer;
 }
 .sidebaritem:hover {
-  background-color: rgb(208, 216, 226);
+  border-bottom: #bb8a33;
+  color: #bb8a33;
 }
 .contact-us {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
+  font-family: sans-serif;
 }
 .footer-text {
   font-size: 14px;
-  font-family: "Roboto";
-  color: #606060;
+  color: #ffffff;
 }
 .contactus {
   font-size: 18px !important;
-  font-family: "Roboto" !important;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 500 !important;
+  color: #ffffff;
   padding-left: 12px;
 }
 
 .selected {
-  background-color: rgb(203, 213, 225);
+  color: #bb8a33;
 }
 .link {
   text-decoration: none;
   font-size: 18px !important;
+}
+.social-icon:hover {
+  color: #bb8a33;
 }
