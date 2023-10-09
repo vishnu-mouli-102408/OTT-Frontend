@@ -73,7 +73,7 @@ const filmData = [
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ padding: "25px" }}>
       {/* <Carousel /> */}
       <div>
         <MovieList title="8G Live Original Show" movieData={filmData} />

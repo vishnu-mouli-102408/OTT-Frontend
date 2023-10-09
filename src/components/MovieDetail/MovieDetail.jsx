@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 
 const MovieDetail = () => {
   return (
-    <div className="px-1 py-8">
+    <div className="px-1 py-8" style={{ padding: "25px" }}>
       <h1 className="text-4xl font-bold">I Dream in Another Language</h1>
       <div className="flex items-start justify-between my-8 space-x-4">
         <div className="flex items-start space-x-4 ">

@@ -36,7 +36,6 @@ import {
 } from "./components/Sidebar/Sidebardata.jsx";
 import OTPScreen from "./components/OtpPage/OTP.jsx";
 import TabsItem from "./pages/Distributor/TabsItem.jsx";
-import UploadVideo from "./components/VideoUploading/UploadVideo.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
 import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
 
@@ -79,62 +78,6 @@ const appRouter = createBrowserRouter([
           {
             path: "/video/:id",
             element: <SpecifiVideo />,
-          },
-          {
-            path: "/distributor",
-            element: <DistributorDashboard />,
-          },
-          {
-            path: "/admin",
-            element: <Navigate to="/admin/distributors" />,
-          },
-          {
-            path: "/admin/distributors",
-            element: (
-              <div style={{ height: "100vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <DistributorDetails />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/admin/movies",
-            element: (
-              <div style={{ height: "100vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <MovieCount />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/admin/users",
-            element: (
-              <div style={{ height: "100vh" }} className="flex-row">
-                <Sidebar SidebarData={adminSidebardata} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <UserDetails />
-                </div>
-              </div>
-            ),
-          },
-          {
-            path: "/distributor/addmovie",
-            element: <AddMovie />,
-          },
-          {
-            path: "/distributor/movies",
-            element: (
-              <div style={{ height: "100vh" }} className="flex-row">
-                <Sidebar SidebarData={distributorData} />
-                <div style={{ overflow: "auto", width: "100%" }}>
-                  <TabsItem />
-                </div>
-              </div>
-            ),
           },
         ],
       },
@@ -211,10 +154,6 @@ const appRouter = createBrowserRouter([
   {
     path: "/video/123",
     element: <VideoLayout />,
-  },
-  {
-    path: "/uploadVideo",
-    element: <UploadVideo />,
   },
 ]);
 
