@@ -117,6 +117,7 @@ export default function SignUp() {
                   fullWidth
                   id="firstName"
                   label="First Name"
+                  inputProps={{ style: { color: "white" } }}
                   style={{
                     backgroundColor: "#131314",
                     color: "#fff",
@@ -139,6 +140,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  inputProps={{ style: { color: "white" } }}
                   style={{
                     backgroundColor: "#131314",
                     color: "#fff",
@@ -160,6 +162,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  inputProps={{ style: { color: "white" } }}
                   style={{
                     backgroundColor: "#131314",
                     color: "#fff",
@@ -186,6 +189,7 @@ export default function SignUp() {
                   label="Mobile Number"
                   name="mobile"
                   autoComplete="mobile"
+                  inputProps={{ style: { color: "white" } }}
                   style={{
                     backgroundColor: "#131314",
                     color: "#fff",
@@ -213,6 +217,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  inputProps={{ style: { color: "white" } }}
                   style={{
                     backgroundColor: "#131314",
                     color: "#fff",
@@ -235,7 +240,10 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <FormControl component="fieldset" style={{ padding: "14px" }}>
+            <FormControl
+              component="fieldset"
+              style={{ padding: "14px", color: "white", margin: "5px" }}
+            >
               <FormLabel component="legend">Select a Role</FormLabel>
               <RadioGroup
                 aria-label="role"
@@ -244,22 +252,23 @@ export default function SignUp() {
                 style={{
                   display: "flex",
                   flexDirection: "row",
+                  color: "white",
                 }}
                 onChange={handleRoleChange}
               >
                 <FormControlLabel
                   value="user"
-                  control={<Radio />}
+                  control={<Radio sx={{ color: "white" }} />}
                   label="User"
                 />
                 <FormControlLabel
                   value="admin"
-                  control={<Radio />}
+                  control={<Radio sx={{ color: "white" }} />}
                   label="Admin"
                 />
                 <FormControlLabel
                   value="distributor"
-                  control={<Radio />}
+                  control={<Radio sx={{ color: "white" }} />}
                   label="Distributor"
                 />
               </RadioGroup>

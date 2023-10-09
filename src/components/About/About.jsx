@@ -73,7 +73,7 @@ const workingInfo = [
 
 const About = () => {
   return (
-    <div>
+    <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
       <div
         style={{
           backgroundImage: `url(${SectionImage})`,

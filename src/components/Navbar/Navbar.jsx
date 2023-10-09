@@ -17,7 +17,7 @@ const Navbar = () => {
   console.log(outline);
   return (
     <div
-      className="p-1 flex flex-col space-y-4  bg-black py-2 "
+      className="p-1 flex flex-col space-y-4  bg-black py-2"
       style={{ padding: "25px" }}
     >
       <div className=" flex items-center justify-between">

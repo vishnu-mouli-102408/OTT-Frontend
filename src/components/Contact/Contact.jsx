@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
-    <>
+    <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
       <div
         style={{
           backgroundImage: `url(${SectionImage})`,
@@ -238,7 +238,7 @@ const Contact = () => {
       </div>
 
       {/* <!-- end contacts --> */}
-    </>
+    </div>
   );
 };
 

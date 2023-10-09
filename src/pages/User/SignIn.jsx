@@ -110,9 +110,9 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              inputProps={{ style: { color: "white" } }}
               style={{
                 backgroundColor: "#131314",
-                color: "#fff",
                 borderRadius: "6px",
               }}
               color="warning"
@@ -134,10 +134,10 @@ export default function SignInSide() {
               name="password"
               label="Password"
               type="password"
+              inputProps={{ style: { color: "white" } }}
               id="password"
               style={{
                 backgroundColor: "#131314",
-                color: "#fff",
                 borderRadius: "6px",
               }}
               color="warning"

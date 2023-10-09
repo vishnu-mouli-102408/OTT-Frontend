@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import {
-  Avatar,
   Box,
   Button,
   CssBaseline,
@@ -17,7 +16,10 @@ import {
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { distributorData } from "../../components/Sidebar/Sidebardata";
 import "./distributor.css";
+import { useState } from "react";
 // import Background from "./section.jpg";
+
+import axios from "axios";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -32,6 +34,50 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const AddMovie = () => {
+  const [value, setVAlue] = useState("");
+  const [videoFile, setVideoFile] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    length: "",
+    description: "",
+    yearOfRelease: "",
+    language: "",
+  });
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    // console.log(videoFile.name);
+    // console.log(file);
+    setVideoFile(file);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const dataToSend = new FormData();
+    dataToSend.append("video", videoFile);
+    dataToSend.append("name", formData.name);
+    dataToSend.append("length", formData.length);
+    dataToSend.append("description", formData.description);
+    dataToSend.append("yearOfRelease", formData.yearOfRelease);
+    dataToSend.append("language", formData.language);
+
+    try {
+      const response = await axios.post("/api/upload", dataToSend);
+      console.log("Upload successful:", response.data);
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
+  };
+
   return (
     <>
       <div className="flex-row" style={{ height: "100vh" }}>
@@ -69,12 +115,16 @@ const AddMovie = () => {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       autoComplete="movie-title"
-                      name="movieTitle"
+                      name="name"
+                      required
+                      onChange={handleInputChange}
+                      value={formData.name}
                       fullWidth
                       id="movieTitle"
                       label="Movie title"
                       autoFocus
-                      InputLabelProps={{ sx: { color: "white" } }}
+                      inputProps={{ style: { color: "white" } }}
+                      inputlabelprops={{ sx: { color: "white" } }}
                       style={{
                         backgroundColor: "#131314",
                         color: "#fff",
@@ -88,9 +138,13 @@ const AddMovie = () => {
                       fullWidth
                       id="duration"
                       label="Duration"
-                      name="duration"
+                      name="length"
+                      required
+                      onChange={handleInputChange}
+                      value={formData.length}
                       autoComplete="duration"
-                      InputLabelProps={{ sx: { color: "white" } }}
+                      inputlabelprops={{ sx: { color: "white" } }}
+                      inputProps={{ style: { color: "white" } }}
                       style={{
                         backgroundColor: "#131314",
                         color: "#fff",
@@ -103,10 +157,14 @@ const AddMovie = () => {
                     <TextField
                       fullWidth
                       id="language"
+                      required
                       label="Language Used"
                       name="language"
+                      onChange={handleInputChange}
+                      value={formData.language}
                       autoComplete="language"
-                      InputLabelProps={{ sx: { color: "white" } }}
+                      inputlabelprops={{ sx: { color: "white" } }}
+                      inputProps={{ style: { color: "white" } }}
                       style={{
                         backgroundColor: "#131314",
                         color: "#fff",
@@ -119,10 +177,14 @@ const AddMovie = () => {
                     <TextField
                       fullWidth
                       id="year"
+                      required
                       label="Year of Release"
-                      name="year"
+                      name="yearOfRelease"
+                      onChange={handleInputChange}
+                      value={formData.yearOfRelease}
                       autoComplete="year"
-                      InputLabelProps={{ sx: { color: "white" } }}
+                      inputlabelprops={{ sx: { color: "white" } }}
+                      inputProps={{ style: { color: "white" } }}
                       style={{
                         backgroundColor: "#131314",
                         color: "#fff",
@@ -153,17 +215,15 @@ const AddMovie = () => {
                       Drop Your Image Here
                       <VisuallyHiddenInput type="file" />
                     </Button>
-                    <Avatar
-                      alt="Travis Howard"
-                      variant="square"
-                      src="https://random.imagecdn.app/500/150"
-                      sx={{
-                        width: 150,
-                        height: 100,
-                        margin: "auto",
-                        padding: 2,
-                      }}
-                    />
+                    <Typography
+                      component="h4"
+                      variant="subtitle1"
+                      color="white"
+                      align="center"
+                      gutterBottom
+                    >
+                      {""}
+                    </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <Button
@@ -188,17 +248,15 @@ const AddMovie = () => {
                         aria-label="Trhumbnail"
                       />
                     </Button>
-                    <Avatar
-                      variant="square"
-                      sx={{
-                        width: 150,
-                        height: 100,
-                        margin: "auto",
-                        padding: 2,
-                      }}
-                      alt="Travis Howard"
-                      src="https://random.imagecdn.app/500/150"
-                    />
+                    <Typography
+                      component="h4"
+                      variant="subtitle1"
+                      color="white"
+                      align="center"
+                      gutterBottom
+                    >
+                      {""}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <Grid container spacing={2}>
@@ -206,15 +264,19 @@ const AddMovie = () => {
                     <TextField
                       fullWidth
                       id="outlined-multiline-static"
+                      name="description"
+                      required
                       label="Description"
+                      onChange={handleInputChange}
+                      value={formData.description}
                       multiline
                       rows={4}
-                      InputLabelProps={{ sx: { color: "white" } }}
+                      inputlabelprops={{ sx: { color: "white" } }}
                       style={{
                         backgroundColor: "#131314",
-                        color: "#fff",
                         borderRadius: "6px",
                       }}
+                      inputProps={{ style: { color: "white" } }}
                       color="warning"
                     />
                   </Grid>
@@ -229,18 +291,20 @@ const AddMovie = () => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         label="Category"
-                        InputLabelProps={{ sx: { color: "red" } }}
+                        inputlabelprops={{ sx: { color: "white" } }}
+                        // inputProps={{ style: { color: "white" } }}
                         style={{
                           backgroundColor: "#131314",
-                          color: "#fff",
                           borderRadius: "6px",
+                          color: "white",
                         }}
                         color="warning"
-                        // onChange={handleChange}
+                        value={value}
+                        onChange={(e) => setVAlue(e.target.value)}
                       >
-                        <MenuItem value="">Ten</MenuItem>
-                        <MenuItem value="">Twenty</MenuItem>
-                        <MenuItem value="">Thirty</MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
@@ -264,19 +328,20 @@ const AddMovie = () => {
                       }}
                     >
                       Drop Your Movie Here
-                      <VisuallyHiddenInput type="file" />
+                      <VisuallyHiddenInput
+                        type="file"
+                        value={""}
+                        onChange={handleFileChange}
+                      />
                     </Button>
-                    <Avatar
-                      alt="Travis Howard"
-                      variant="square"
-                      src="https://random.imagecdn.app/500/150"
-                      sx={{
-                        width: 150,
-                        height: 100,
-                        margin: "auto",
-                        padding: 2,
-                      }}
-                    />
+                    <Typography
+                      component="h4"
+                      variant="subtitle1"
+                      color="white"
+                      align="center"
+                    >
+                      {videoFile.name}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <Button
@@ -284,6 +349,7 @@ const AddMovie = () => {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  onClick={handleSubmit}
                   style={{
                     borderRadius: "6px",
                     backgroundColor: "transparent",
