@@ -20,20 +20,21 @@ function CommonTable({
   initialPage = 0,
   action,
   actionButtonHandler,
+  dataGiven = [],
 }) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(dataGiven);
   const [page, setPage] = useState(initialPage);
   const [rowsPerPage, setRowsPerPage] = useState(pageSize);
   const [totalItems, setTotalItems] = useState(0);
 
-  useEffect(() => {
-    fetch(`${apiEndpoint}?page=${page + 1}&pageSize=${rowsPerPage}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setData(result);
-        setTotalItems(result.length);
-      });
-  }, [apiEndpoint, page, rowsPerPage]);
+  //   useEffect(() => {
+  //     fetch(`${apiEndpoint}?page=${page + 1}&pageSize=${rowsPerPage}`)
+  //       .then((response) => response.json())
+  //       .then((result) => {
+  //         setData(result.slice(1, 10));
+  //         setTotalItems(result.length);
+  //       });
+  //   }, [apiEndpoint, page, rowsPerPage]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -48,22 +49,36 @@ function CommonTable({
     <div>
       <TableContainer component={Paper}>
         <Table>
-          <TableHead style={{ background: "#1976d2", fontSize: "24px" }}>
-            <TableRow className="tabHead">
+          <TableHead className="">
+            <TableRow className="commonHead">
               {columns.map((column) => (
-                <TableCell key={column.field}>{column.label}</TableCell>
+                <TableCell
+                  key={column.field}
+                  className="sanFamily"
+                  style={{
+                    color: "#ffffff",
+                    fontSize: "17px",
+                    fontWeight: "540",
+                  }}
+                >
+                  {column.label}
+                </TableCell>
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{ background: "#000" }}>
             {data.map((row) => (
               <TableRow key={row.id} className="commonTabRow">
                 {columns.map((column) =>
                   column.id === "action" ? (
-                    <TableCell className="flex-row">
+                    <TableCell
+                      className="flex-row"
+                      style={{ color: "#ffffff" }}
+                    >
                       {action.map((item) => {
                         return (
                           <Button
+                            variant="outlined"
                             className={`actionItem-margin ${item.class}`}
                             onClick={() =>
                               actionButtonHandler(item.action, row)
@@ -79,7 +94,11 @@ function CommonTable({
                       {column.format(row[column.id], row)}
                     </TableCell>
                   ) : (
-                    <TableCell className="tableRow" key={column.field}>
+                    <TableCell
+                      className="tableRow"
+                      key={column.field}
+                      style={{ color: "#ffffff" }}
+                    >
                       {row[column.id]}
                     </TableCell>
                   )
@@ -92,7 +111,7 @@ function CommonTable({
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 50]}
         component="div"
-        count={100}
+        count={10}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

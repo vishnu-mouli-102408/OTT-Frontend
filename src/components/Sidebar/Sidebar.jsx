@@ -30,9 +30,10 @@ const Sidebar = ({ SidebarData }) => {
                     <div
                       style={{
                         marginLeft: "20px",
-                        fontSize: "18px",
-                        color: "#060606",
-                        fontFamily: "Roboto",
+                        fontSize: "23px",
+                        fontFamily: "Source Sans Pro, sans-serif",
+                        fontWeight: "440",
+                        padding: "10px",
                       }}
                     >
                       {item.title}
@@ -43,11 +44,11 @@ const Sidebar = ({ SidebarData }) => {
             })}
           </div>
           <div className="flex-column contactus">
-            <div className="">CONTACT US</div>
+            <div className="contact-us">CONTACT US</div>
             <div className="flex-row">
-              <FacebookIcon fontSize="large" />
-              <InstagramIcon fontSize="large" />
-              <TwitterIcon fontSize="large" />
+              <FacebookIcon fontSize="large" className="social-icon" />
+              <InstagramIcon fontSize="large" className="social-icon" />
+              <TwitterIcon fontSize="large" className="social-icon" />
             </div>
             <div className="footer-text">
               Enjoy! Now to see your channels and recommendations!

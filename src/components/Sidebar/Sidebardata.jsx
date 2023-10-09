@@ -14,17 +14,17 @@ export const SidebarData = [
   {
     title: "Home",
     path: "/",
-    icon: <HomeIcon />,
+    icon: <HomeIcon fontSize="large" />,
   },
   {
     title: "Trending",
     path: "/trending",
-    icon: <WhatshotIcon />,
+    icon: <WhatshotIcon fontSize="large" />,
   },
   {
     title: "Saved Videos",
     path: "/savedvideos",
-    icon: <PlaylistAddIcon />,
+    icon: <PlaylistAddIcon fontSize="large" />,
   },
 ];
 export const distributorData = [
