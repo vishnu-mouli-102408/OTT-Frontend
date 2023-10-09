@@ -2,9 +2,26 @@ import { useState } from "react";
 import OtpInput from "react-otp-input";
 import "./OTP.css";
 import { Button, Paper } from "@mui/material";
+import { useSelector } from "react-redux";
+import { verifyOTP } from "../../services/userAuth";
+import { useNavigate } from "react-router-dom";
 // import KeyIcon from "@mui/icons-material/Key";
 const OTPScreen = () => {
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
+  const userState = useSelector((state) => state.user);
+  const handleOTP = () => {
+    console.log(userState.secret);
+    verifyOTP({ otp, secret: userState.secretCode })
+      .then((res) => {
+        console.log(res);
+        alert("valid otp");
+        navigate("/");
+      })
+      .catch((err) => {
+        alert("invalid otp");
+      });
+  };
   return (
     <div className="flex-center justify-content-center mainContainer bg-image">
       <Paper
@@ -64,7 +81,12 @@ const OTPScreen = () => {
           Resend Code
         </Button>
 
-        <Button color="primary" variant="contained" className="signinBtn">
+        <Button
+          color="primary"
+          variant="contained"
+          className="signinBtn"
+          onClick={() => handleOTP()}
+        >
           Sign In
         </Button>
       </Paper>

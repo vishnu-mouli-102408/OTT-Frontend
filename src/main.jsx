@@ -38,6 +38,7 @@ import OTPScreen from "./components/OtpPage/OTP.jsx";
 import TabsItem from "./pages/Distributor/TabsItem.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
 import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
+import "./services/userAuth.js";
 
 const appRouter = createBrowserRouter([
   {

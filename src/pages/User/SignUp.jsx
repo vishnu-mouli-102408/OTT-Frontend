@@ -8,11 +8,19 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { userRegistration } from "../../services/userAuth";
+import { useDispatch } from "react-redux";
+import { setUserRoles } from "../../userSlice";
 
 function Copyright(props) {
   return (
@@ -35,11 +43,14 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const onSubmit = (data) => {
-    console.log(data);
+  const [selectedRole, setSelectedRole] = useState("user"); // Default selected role is 'user'
+
+  const handleRoleChange = (event) => {
+    setSelectedRole(event.target.value);
   };
 
   const form = useForm();
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, formState, reset } = form;
   const { errors, isSubmitSuccessful } = formState;
@@ -49,6 +60,24 @@ export default function SignUp() {
       reset();
     }
   }, [isSubmitSuccessful, reset]);
+  const onSubmit = (data) => {
+    const newData = {
+      username: data.firstName + " " + data.lastName,
+      email: data.email,
+      phoneNumber: data.mobile,
+      password: data.password,
+      gender: "male",
+      DOB: "29-07-2203",
+      role: selectedRole,
+    };
+    // console.log(newData, data);
+    dispatch(setUserRoles(selectedRole));
+    userRegistration(newData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -190,6 +219,35 @@ export default function SignUp() {
                     helperText={errors.password?.message}
                   />
                 </Grid>
+                <FormControl component="fieldset" style={{ padding: "14px" }}>
+                  <FormLabel component="legend">Select a Role</FormLabel>
+                  <RadioGroup
+                    aria-label="role"
+                    name="role"
+                    value={selectedRole}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                    }}
+                    onChange={handleRoleChange}
+                  >
+                    <FormControlLabel
+                      value="user"
+                      control={<Radio />}
+                      label="User"
+                    />
+                    <FormControlLabel
+                      value="admin"
+                      control={<Radio />}
+                      label="Admin"
+                    />
+                    <FormControlLabel
+                      value="distributor"
+                      control={<Radio />}
+                      label="Distributor"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Grid>
               <Button
                 type="submit"
