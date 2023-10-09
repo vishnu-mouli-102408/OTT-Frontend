@@ -9,9 +9,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { sendOTP, userLogin } from "../../services/userAuth";
+import { setSecretCode } from "../../userSlice";
 
 function Copyright(props) {
   return (
@@ -33,9 +36,24 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function SignInSide() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log(data);
+    userLogin(data)
+      .then((res) => {
+        // dispatch(setSecretCode(res.data.token));
+        localStorage.setItem("token", res.data.token);
+        sendOTP({ toMail: data.email })
+          .then((response) => {
+            console.log(response);
+            dispatch(setSecretCode(response.data.secret));
+            navigate("/login/otp");
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
 
   const form = useForm({

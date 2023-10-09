@@ -75,7 +75,7 @@ const MovieDetail = () => {
           </div>
         </div>
         <div>
-          <ReactPlayer url="https://www.youtube.com/watch?v=LXb3EKWsInQ" />
+          {/* <ReactPlayer url="https://www.youtube.com/watch?v=LXb3EKWsInQ" /> */}
           {/* <VideoLayout /> */}
         </div>
       </div>
@@ -413,6 +413,10 @@ const MovieDetail = () => {
               </div>
             </div>
           </div>
+          <ReactPlayer
+            url="https://d2aq68l8afi62p.cloudfront.net/prakash/sample_video.mp4"
+            controls={true}
+          />
         </div>
       </div>
     </div>
