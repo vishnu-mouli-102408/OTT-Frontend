@@ -1,10 +1,12 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-unescaped-entities */
 import CoverImage from "../../assets/covers/cover5.png";
-import ReactPlayer from "react-player";
+import "../../pages/css/details.css";
+import VideoLayout from "../VideoLayout";
 
 const MovieDetail = () => {
   return (
-    <div className="px-1 py-8" style={{ padding: "25px" }}>
+    <div className="px-8 py-8">
       <h1 className="text-4xl font-bold">I Dream in Another Language</h1>
       <div className="flex items-start justify-between my-8 space-x-4">
         <div className="flex items-start space-x-4 ">
@@ -57,11 +59,8 @@ const MovieDetail = () => {
             </div>
           </div>
         </div>
-        <div>
-          <ReactPlayer
-            url="https://d2aq68l8afi62p.cloudfront.net/prakash/sample_video.mp4"
-            controls={true}
-          />
+        <div style={{ width: "100%", height: "400px" }}>
+          <VideoLayout />
         </div>
       </div>
     </div>

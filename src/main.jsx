@@ -13,7 +13,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import SignIn from "./pages/User/SignIn.jsx";
-import SignUp from "./pages/User/SignUp.jsx";
+import SignUp from "./pages/User/SignUp";
 import About from "./components/About/About.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import Home from "./components/Home/Home.jsx";
@@ -69,21 +69,33 @@ const appRouter = createBrowserRouter([
             path: "/detail",
             element: <MovieDetail />,
           },
-          {
-            path: "/user/profile",
-            element: <Profile />,
-          },
-          {
-            path: "/user",
-            element: <Dashboard />,
-          },
-          {
-            path: "/video/:id",
-            element: <SpecifiVideo />,
-          },
         ],
       },
     ],
+  },
+  {
+    path: "/user/profile",
+    element: (
+      <Auth>
+        <Profile />
+      </Auth>
+    ),
+  },
+  {
+    path: "/user",
+    element: (
+      <Auth>
+        <Dashboard />
+      </Auth>
+    ),
+  },
+  {
+    path: "/video/:id",
+    element: (
+      <Auth>
+        <SpecifiVideo />
+      </Auth>
+    ),
   },
   {
     path: "/distributor",

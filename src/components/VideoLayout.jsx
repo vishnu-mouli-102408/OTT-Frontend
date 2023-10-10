@@ -7,7 +7,7 @@ const VideoLayout = () => {
     controlBar: {
       skipButtons: {
         backward: 10,
-        forward: 5,
+        forward: 10,
       },
     },
     sources: [

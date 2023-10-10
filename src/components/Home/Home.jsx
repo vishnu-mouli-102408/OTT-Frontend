@@ -1,27 +1,3 @@
-// /* eslint-disable react/jsx-key */
-// import Sidebar from "../Sidebar/Sidebar";
-// import { videodata } from "./videos";
-// import VideoCard from "../VideoCard/VideoCard";
-// import "./Home.css";
-// import { SidebarData } from "../Sidebar/Sidebardata";
-// import { Box } from "@mui/material";
-// export default function Home() {
-//   return (
-//     <div className="flex-row">
-//       <Box sx={{ display: { xs: "none", md: "flex" } }}>
-//         <Sidebar SidebarData={SidebarData} />
-//       </Box>
-//       <div className="flex-row flex-wrap videoContent justify-content-center">
-//         {videodata.map((video) => (
-//           <VideoCard item={video} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// New Home
-
 // import Card from "../Card/Card";
 import MovieList from "../../components/MovieList/MovieList";
 
@@ -73,7 +49,7 @@ const filmData = [
 
 const Home = () => {
   return (
-    <div style={{ padding: "25px" }}>
+    <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
       {/* <Carousel /> */}
       <div>
         <MovieList title="8G Live Original Show" movieData={filmData} />

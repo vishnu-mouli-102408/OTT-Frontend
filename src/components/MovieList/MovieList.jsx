@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
-import Card from "../Card/Card";
+import Card from "../../components/Card/Card";
 
 const MovieList = ({ title, movieData }) => {
   return (

@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const NavbarData = [
   { id: 1, name: "Home", url: "/" },
   { id: 2, name: "Movies", url: "/movies" },
-  { id: 3, name: "Web Shows", url: "/web-shows" },
-  { id: 4, name: "Music", url: "/music" },
-  { id: 5, name: "Rent", url: "/rent" },
-  { id: 6, name: "Mini Movies", url: "/mini-moives" },
+  { id: 3, name: "Rent", url: "/rent" },
 ];
 
 const Navbar = () => {
   const [outline, setOutline] = useState(false);
-  console.log(outline);
+
   return (
-    <div className="p-1 flex flex-col space-y-4  bg-black py-2  ">
+    <div
+      className="p-1 flex flex-col space-y-4  bg-black py-2"
+      style={{ padding: "25px" }}
+    >
       <div className=" flex items-center justify-between">
         <Link to="/">
           <img src={Logo} alt="OTT Logo" className="w-20 h-16" />
@@ -29,12 +29,13 @@ const Navbar = () => {
           ))}
           <li>EN</li>
         </ul>
-        <a
-          href="#"
+        <Link
+          to="/user/login"
           className="px-8 border-2 py-2 rounded text-sm border-[#bc8a33]"
+          onClick={() => localStorage.removeItem("token")}
         >
-          SIGN IN
-        </a>
+          SIGN OUT
+        </Link>
       </div>
       <div
         className={`w-full rounded-2xl flex items-center justify-between bg-[#131314] px-4 py-2 border-0 space-x-4 ${
