@@ -30,7 +30,7 @@ const OTPScreen = () => {
         navigate(from, { replace: true });
       })
       .catch(() => {
-        alert("invalid otp");
+        // alert("invalid otp");
       });
   };
   return (

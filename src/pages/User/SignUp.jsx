@@ -74,6 +74,7 @@ export default function SignUp() {
     dispatch(setUserRoles(selectedRole));
     userRegistration(newData)
       .then((res) => {
+        // navigate('/signin');
         console.log(res);
       })
       .catch((err) => console.log(err));

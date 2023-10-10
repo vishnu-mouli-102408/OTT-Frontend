@@ -81,26 +81,26 @@ export const getAllUsers = () => {
       });
   });
 };
-// export const getAllUsers = (data, headers) => {
-//   const { movieId, isAccepted = false, isRejected = false } = data;
-//   const token = localStorage.getItem("token");
-//   return new Promise((resolve, reject) => {
-//     axios
-//       .get(`${DEV_API}/api/v1/change-movie-status/${movieId}`, {
-//         params: { isAccepted, isRejected },
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//           "ngrok-skip-browser-warning": "69420",
-//         },
-//       })
-//       .then((res) => {
-//         resolve(res);
-//       })
-//       .catch((err) => {
-//         reject(err);
-//       });
-//   });
-// };
+export const acceptRejectMovie = (data, headers) => {
+  const { movieId, isAccepted = false, isRejected = false } = data;
+  const token = localStorage.getItem("token");
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${DEV_API}/api/v1/change-movie-status/${movieId}`, {
+        params: { isAccepted, isRejected },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "69420",
+        },
+      })
+      .then((res) => {
+        resolve({ data: res.data.movies });
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
 // export const distributorMovies = (data) => {
 //   const { accepted = false, rejected = false, distributorId } = data;
 //   return new Promise((resolve, rejected) => {

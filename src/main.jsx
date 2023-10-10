@@ -77,7 +77,7 @@ const appRouter = createBrowserRouter(
           }
         />
       </Route>
-      <Route element={<Auth Allowedrole={"admin"} />}>
+      <Route element={<Auth Allowedrole={"superAdmin"} />}>
         <Route path="/admin" element={<Navigate to="/admin/distributors" />} />
         <Route
           path="/admin/distributors"
