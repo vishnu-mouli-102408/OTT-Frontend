@@ -124,7 +124,7 @@ function CommonTable({
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
+      {/* <TablePagination
         rowsPerPageOptions={[5, 10, 25, 50]}
         component="div"
         count={10}
@@ -132,7 +132,7 @@ function CommonTable({
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
     </div>
   );
 }
