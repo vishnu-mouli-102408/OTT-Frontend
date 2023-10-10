@@ -6,15 +6,12 @@ import { Link } from "react-router-dom";
 const NavbarData = [
   { id: 1, name: "Home", url: "/" },
   { id: 2, name: "Movies", url: "/movies" },
-  { id: 3, name: "Web Shows", url: "/web-shows" },
-  { id: 4, name: "Music", url: "/music" },
-  { id: 5, name: "Rent", url: "/rent" },
-  { id: 6, name: "Mini Movies", url: "/mini-moives" },
+  { id: 3, name: "Rent", url: "/rent" },
 ];
 
 const Navbar = () => {
   const [outline, setOutline] = useState(false);
-  console.log(outline);
+
   return (
     <div
       className="p-1 flex flex-col space-y-4  bg-black py-2"
@@ -34,10 +31,10 @@ const Navbar = () => {
         </ul>
         <Link
           to="/user/login"
-          href="#"
           className="px-8 border-2 py-2 rounded text-sm border-[#bc8a33]"
+          onClick={() => localStorage.removeItem("token")}
         >
-          SIGN IN
+          SIGN OUT
         </Link>
       </div>
       <div

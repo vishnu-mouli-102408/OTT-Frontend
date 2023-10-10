@@ -68,21 +68,33 @@ const appRouter = createBrowserRouter([
             path: "/detail",
             element: <MovieDetail />,
           },
-          {
-            path: "/user/profile",
-            element: <Profile />,
-          },
-          {
-            path: "/user",
-            element: <Dashboard />,
-          },
-          {
-            path: "/video/:id",
-            element: <SpecifiVideo />,
-          },
         ],
       },
     ],
+  },
+  {
+    path: "/user/profile",
+    element: (
+      <Auth>
+        <Profile />
+      </Auth>
+    ),
+  },
+  {
+    path: "/user",
+    element: (
+      <Auth>
+        <Dashboard />
+      </Auth>
+    ),
+  },
+  {
+    path: "/video/:id",
+    element: (
+      <Auth>
+        <SpecifiVideo />
+      </Auth>
+    ),
   },
   {
     path: "/distributor",
