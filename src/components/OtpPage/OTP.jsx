@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import OtpInput from "react-otp-input";
 import "./OTP.css";
@@ -5,19 +6,27 @@ import { Button, Paper } from "@mui/material";
 import { useSelector } from "react-redux";
 import { verifyOTP } from "../../services/userAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import Snackbar from "../../common/Table/Snackbar/Snackbar";
 // import KeyIcon from "@mui/icons-material/Key";
 const OTPScreen = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || "/";
+  // const location = useLocation();
+
+  const from =
+    localStorage.getItem("role") == "user"
+      ? "/"
+      : localStorage.getItem("role") == "distributor"
+      ? "/distributor"
+      : "/admin";
+
   const userState = useSelector((state) => state.user);
   const handleOTP = () => {
     console.log(userState.secret);
     verifyOTP({ otp, secret: userState.secretCode })
       .then((res) => {
         console.log(res);
-        alert("valid otp");
+        // alert("valid otp");
         navigate(from, { replace: true });
       })
       .catch(() => {
@@ -82,15 +91,17 @@ const OTPScreen = () => {
         <Button variant="outlined" className="resendbutton">
           Resend Code
         </Button>
-
-        <Button
+        <Button onClick={() => handleOTP()}>
+          <Snackbar />
+        </Button>
+        {/* <Button
           color="primary"
           variant="contained"
           className="signinBtn"
           onClick={() => handleOTP()}
         >
           Sign In
-        </Button>
+        </Button> */}
       </Paper>
     </div>
   );

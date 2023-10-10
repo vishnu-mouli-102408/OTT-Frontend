@@ -30,7 +30,7 @@ const Navbar = () => {
           <li>EN</li>
         </ul>
         <Link
-          to="/user/login"
+          to="/login"
           className="px-8 border-2 py-2 rounded text-sm border-[#bc8a33]"
           onClick={() => localStorage.removeItem("token")}
         >

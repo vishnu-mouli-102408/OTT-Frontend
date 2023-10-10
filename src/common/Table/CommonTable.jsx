@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // CommonTable.js
 import React, { useEffect, useState } from "react";
 import "./CommonTable.css";
@@ -30,7 +31,7 @@ function CommonTable({
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
-    api.view(apiProps, headers).then((res) => {
+    api?.view(apiProps, headers).then((res) => {
       setData(res.data);
       displaySnackbar({ message: "Succefully", type: "success" });
     });
