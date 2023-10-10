@@ -1,6 +1,7 @@
 import VideoJs from "./VideoJs";
 
-const VideoLayout = () => {
+const VideoLayout = ({ videoLink }) => {
+  console.log(videoLink, "this is link");
   const options = {
     autoplay: false,
     controls: true,
@@ -12,7 +13,7 @@ const VideoLayout = () => {
     },
     sources: [
       {
-        src: "https://d2aq68l8afi62p.cloudfront.net/sample_video.mp4",
+        src: videoLink,
         type: "video/mp4",
       },
     ],

@@ -1,18 +1,34 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-unescaped-entities */
 import CoverImage from "../../assets/covers/cover5.png";
+import { CLOUD_FRONT } from "../../env";
 import "../../pages/css/details.css";
 import VideoLayout from "../VideoLayout";
-
+import { useSelector } from "react-redux";
 const MovieDetail = () => {
+  const userState = useSelector((state) => state.user);
+  const { selectedVideo } = userState;
+  const link = `${CLOUD_FRONT}/${selectedVideo?.key}${selectedVideo.movieName}.mp4`;
+  console.log(selectedVideo);
   return (
     <div className="px-8 py-8">
       <h1 className="text-4xl font-bold">I Dream in Another Language</h1>
       <div className="flex items-start justify-between my-8 space-x-4">
-        <div className="flex items-start space-x-4 ">
+        <div
+          className="flex items-start space-x-4"
+          style={{ marginTop: "50px" }}
+        >
           <div className="md:w-1/2">
-            <img src={CoverImage} className="w-full h-96" />
-            <button className="w-full bg-primary py-3">Watch Trailer</button>
+            <img
+              src={`${CLOUD_FRONT}/${selectedVideo.key}thumbnail.jpeg`}
+              className="w-full h-96"
+            />
+            <button
+              className="w-full bg-primary py-3"
+              style={{ borderRadius: "10px" }}
+            >
+              Watch Trailer
+            </button>
           </div>
           <div className="md:w-1/2">
             <div>
@@ -60,7 +76,7 @@ const MovieDetail = () => {
           </div>
         </div>
         <div style={{ width: "100%", height: "400px" }}>
-          <VideoLayout />
+          <VideoLayout videoLink={link} />
         </div>
       </div>
     </div>

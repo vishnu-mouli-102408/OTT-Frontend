@@ -15,7 +15,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendOTP, userLogin } from "../../services/userAuth";
 import { setSecretCode } from "../../userSlice";
-
+import LoadingButton from "@mui/lab/LoadingButton";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useState } from "react";
 function Copyright(props) {
   return (
     <Typography
@@ -39,13 +41,18 @@ const defaultTheme = createTheme();
 export default function SignInSide() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const onSubmit = (data) => {
+    setLoading(true);
     userLogin(data)
       .then((res) => {
-        // dispatch(setSecretCode(res.data.token));
+        const objectString = JSON.stringify(res.data.user);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", objectString);
+        localStorage.setItem("role", res.data.user.role);
         sendOTP({ toMail: data.email })
           .then((response) => {
+            setLoading(false);
             console.log(response);
             dispatch(setSecretCode(response.data.secret));
             navigate("/login/otp");
@@ -53,7 +60,10 @@ export default function SignInSide() {
           })
           .catch((err) => console.log(err));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   const form = useForm({
@@ -156,7 +166,8 @@ export default function SignInSide() {
               error={!!errors.password}
               helperText={errors.password?.message}
             />
-            <Button
+            <LoadingButton
+              loading={loading}
               type="submit"
               fullWidth
               variant="contained"
@@ -168,10 +179,12 @@ export default function SignInSide() {
                 color: "#fff",
                 textTransform: "uppercase",
                 border: "2px solid #bb8a33",
+                minHeight: "40px",
               }}
+              loadingIndicator={<CircularProgress size={24} />}
             >
-              Sign In
-            </Button>
+              {!loading && "Sign In"}
+            </LoadingButton>
             <Grid container justifyContent="flex-end">
               <Grid>
                 <Link to="/user/signup">

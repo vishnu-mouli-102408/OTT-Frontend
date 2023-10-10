@@ -12,14 +12,18 @@ import {
   Select,
   TextField,
   Typography,
+  // LoadingButton,
 } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { distributorData } from "../../components/Sidebar/Sidebardata";
 import "./distributor.css";
 import { useState } from "react";
 // import Background from "./section.jpg";
+import LoadingButton from "@mui/lab/LoadingButton";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import axios from "axios";
+import { DEV_API } from "../../env";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -35,7 +39,10 @@ const VisuallyHiddenInput = styled("input")({
 
 const AddMovie = () => {
   const [value, setVAlue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [videoFile, setVideoFile] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+
   const [formData, setFormData] = useState({
     name: "",
     length: "",
@@ -47,8 +54,17 @@ const AddMovie = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     // console.log(videoFile.name);
-    // console.log(file);
+    console.log(file);
+    // console.log(event);
     setVideoFile(file);
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    // console.log(videoFile.name);
+    // console.log(f);
+    console.log(event);
+    setImageFile(file);
   };
 
   const handleInputChange = (event) => {
@@ -58,20 +74,55 @@ const AddMovie = () => {
       [name]: value,
     });
   };
+  const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJoYXJhdGggR2FkaSIsImVtYWlsIjoiYmhhcmF0aC5nYWRpQGd5dHdvcmt6LmNvbSIsImlhdCI6MTY5NjkzMDg5MSwiZXhwIjoxNjk3MTkwMDkxfQ.Eb3cnSWsnMJ0KaJthcmo05ska8RmYN3r-3OmXZuUPc8`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const dataToSend = new FormData();
-    dataToSend.append("video", videoFile);
-    dataToSend.append("name", formData.name);
-    dataToSend.append("length", formData.length);
-    dataToSend.append("description", formData.description);
-    dataToSend.append("yearOfRelease", formData.yearOfRelease);
-    dataToSend.append("language", formData.language);
+    // const videoAndThumbnailArray = [videoFile, videoFile]; // Create an array of files
 
+    // console.log([videoFile, videoFile]);
+    dataToSend.append("files", videoFile);
+    dataToSend.append("files", imageFile);
+    dataToSend.append("movieName", formData.name);
+    dataToSend.append("movieLength", formData.length);
+    dataToSend.append("movieDescription", formData.description);
+    dataToSend.append("yearOfRelease", formData.yearOfRelease);
+    dataToSend.append("directorName", "Bharath");
+    dataToSend.append("singerName", "sukanya");
+    dataToSend.append("editorName", "venky");
+    dataToSend.append("musicDirectorName", "praveen");
+    dataToSend.append("commission", "123");
+    dataToSend.append("distributorName", "Kumar");
+    dataToSend.append("category", "Funny");
+
+    // dataToSend.append("user);
+    dataToSend.append("language", formData.language);
+    setLoading(true);
+    axios
+      .post(`${DEV_API}/api/v1/upload-video`, dataToSend, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "ngrok-skip-browser-warning": "69420",
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     try {
-      const response = await axios.post("/api/upload", dataToSend);
+      const response = await axios.post(
+        `${DEV_API}/api/v1/upload-video`,
+        dataToSend,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "69420",
+          },
+        }
+      );
       console.log("Upload successful:", response.data);
     } catch (error) {
       console.error("Upload failed:", error);
@@ -216,6 +267,7 @@ const AddMovie = () => {
                       <VisuallyHiddenInput
                         type="file"
                         aria-label="Trhumbnail"
+                        onChange={handleImageChange}
                       />
                     </Button>
                     <Typography
@@ -272,9 +324,9 @@ const AddMovie = () => {
                         value={value}
                         onChange={(e) => setVAlue(e.target.value)}
                       >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value={10}>Gaming</MenuItem>
+                        <MenuItem value={20}>Entertinement</MenuItem>
+                        <MenuItem value={30}>Horror</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
@@ -314,7 +366,7 @@ const AddMovie = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                <Button
+                {/* <Button
                   type="submit"
                   fullWidth
                   variant="contained"
@@ -330,7 +382,27 @@ const AddMovie = () => {
                   }}
                 >
                   Publish Movie
-                </Button>
+                </Button> */}
+                <LoadingButton
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  loading={loading} // Set loading to true when loading
+                  onClick={handleSubmit}
+                  style={{
+                    borderRadius: "6px",
+                    backgroundColor: "transparent",
+                    fontSize: "14px",
+                    color: "#fff",
+                    minHeight: "40px",
+                    textTransform: "uppercase",
+                    border: "2px solid #bb8a33",
+                  }}
+                  loadingIndicator={<CircularProgress size={24} />}
+                >
+                  {!loading && "Publish Movie"}
+                </LoadingButton>
               </Box>
             </Box>
           </Paper>

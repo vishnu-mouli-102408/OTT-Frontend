@@ -6,6 +6,7 @@ const initialState = {
   sidebarItem: "Home", // Initial sidebar items are an empty array
   secretCode: null,
   userRole: null,
+  selectedVideo: null,
 };
 
 const userSlice = createSlice({
@@ -21,10 +22,13 @@ const userSlice = createSlice({
     setUserRoles: (state, action) => {
       state.userRole = action.payload;
     },
+    setSelectedVideo: (state, action) => {
+      state.selectedVideo = action.payload;
+    },
   },
 });
 
-export const { setSidebarItem, setSecretCode, setUserRoles } =
+export const { setSidebarItem, setSecretCode, setUserRoles, setSelectedVideo } =
   userSlice.actions;
 
 export default userSlice.reducer;

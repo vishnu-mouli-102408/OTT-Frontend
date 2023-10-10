@@ -1,9 +1,9 @@
 import axios from "axios";
 import { DEV_API } from "../env";
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW4gZGRkIiwiZW1haWwiOiJwcmF2ZWVucHJha2FzaDExMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY4NzA2MjYsImV4cCI6MTY5NzEyOTgyNn0.arCFBunk4dciH4W5nJzW3sKata8aUqBaCDh_zLdHmL8`;
-
+// const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW4gZGRkIiwiZW1haWwiOiJwcmF2ZWVucHJha2FzaDExMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY4NzA2MjYsImV4cCI6MTY5NzEyOTgyNn0.arCFBunk4dciH4W5nJzW3sKata8aUqBaCDh_zLdHmL8`;
+const token = localStorage.getItem("token");
 export const acceptRejectDistributor = (data, headers) => {
-  const { distributorId, isAccepted = false, isRejected = false } = data;
+  const { distributorId, isAccepted = false, isRejected = false, token } = data;
   return new Promise((resolve, reject) => {
     axios
       .get(`${DEV_API}/api/v1/change-distributor-status/${distributorId}`, {
@@ -38,7 +38,7 @@ export const getDistributors = (data, headers) => {
       });
   });
 };
-export const getAllMoviesAdmin = (data, headers) => {
+export const getAllMoviesAdmin = (data, headers = {}) => {
   const { accepted = false, rejected: reject = false } = data;
 
   return new Promise((resolve, rejected) => {
@@ -46,15 +46,15 @@ export const getAllMoviesAdmin = (data, headers) => {
       .get(`${DEV_API}/api/v1/getAllMovies`, {
         params: { accepted, rejected: reject },
         headers: {
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
           "ngrok-skip-browser-warning": "69420",
         },
       })
       .then((res) => {
-        resolve({ data: res.data.user });
+        resolve({ data: res.data.movies });
       })
       .catch((err) => {
-        reject(err);
+        rejected(err);
       });
   });
 };
