@@ -1,15 +1,15 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+// import {
+//   Box,
+//   Button,
+//   Card,
+//   CardActions,
+//   CardContent,
+//   Container,
+//   Grid,
+//   Stack,
+//   Typography,
+// } from "@mui/material";
+// import { Link } from "react-router-dom";
 import { distributorData } from "../../components/Sidebar/Sidebardata";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./distributor.css";

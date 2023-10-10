@@ -187,7 +187,7 @@ export default function SignInSide() {
             </LoadingButton>
             <Grid container justifyContent="flex-end">
               <Grid>
-                <Link to="/user/signup">
+                <Link to="/signup">
                   <Typography
                     sx={{
                       textDecoration: "underline",

@@ -4,11 +4,13 @@ import "./OTP.css";
 import { Button, Paper } from "@mui/material";
 import { useSelector } from "react-redux";
 import { verifyOTP } from "../../services/userAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // import KeyIcon from "@mui/icons-material/Key";
 const OTPScreen = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   const userState = useSelector((state) => state.user);
   const handleOTP = () => {
     console.log(userState.secret);
@@ -16,7 +18,7 @@ const OTPScreen = () => {
       .then((res) => {
         console.log(res);
         alert("valid otp");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch(() => {
         alert("invalid otp");

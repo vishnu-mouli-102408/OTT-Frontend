@@ -1,28 +1,41 @@
-import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-const Auth = () => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+const Auth = ({ Allowedrole }) => {
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const location = useLocation();
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (localStorage.getItem("token")) {
-        setCurrentUser({ id: "1", name: "foo" });
-      } else {
-        setCurrentUser(null);
-      }
-    }, 2000);
-  }, []);
+  return token && Allowedrole == role ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 
-  if (currentUser === undefined) {
-    return null;
-  }
+  // const [currentUser, setCurrentUser] = useState(undefined);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (localStorage.getItem("token")) {
+  //       setCurrentUser({ ...localStorage });
+  //     } else {
+  //       setCurrentUser(null);
+  //     }
+  //   }, 2000);
+  // }, []);
+  // console.log(currentUser?.role);
 
-  if (!currentUser) {
-    return <Navigate to="/user/login" />;
-  }
+  // if (currentUser === undefined) {
+  //   return null;
+  // }
 
-  return <Outlet />;
+  // if (!currentUser) {
+  //   return <Navigate to="/user/login" />;
+  // }
+
+  // if (currentUser?.role == "distributor") {
+  //   return <Navigate to="/distributor" />;
+  // }
+  // return <Outlet />;
 };
 
 export default Auth;
