@@ -262,7 +262,7 @@ export default function SignUp() {
                   label="User"
                 />
                 <FormControlLabel
-                  value="admin"
+                  value="superAdmin"
                   control={<Radio sx={{ color: "white" }} />}
                   label="Admin"
                 />
