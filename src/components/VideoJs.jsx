@@ -5,6 +5,7 @@ import videojs from "video.js";
 import "video.js/dist//video-js.css";
 // import video from "./video.mp4";
 import "../index.css";
+import "./videojs.css";
 
 const VideoJs = ({ options }) => {
   // Your JSX for the video player controls here.
@@ -30,7 +31,7 @@ const VideoJs = ({ options }) => {
 
   return (
     <>
-      <div data-vjs-player>
+      <div data-vjs-player style={{ maxHeight: "400px!important" }}>
         <video
           ref={videoRef}
           className="video-js vjs-bug-play-centered"

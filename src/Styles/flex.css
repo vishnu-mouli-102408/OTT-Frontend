@@ -147,7 +147,9 @@
 .fs-18 {
   font-size: 18px;
 }
-
+.gap-2 {
+  gap: 20px;
+}
 .fs-20 {
   font-size: 20px;
 }

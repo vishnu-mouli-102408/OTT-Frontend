@@ -1,62 +1,31 @@
 // import Card from "../Card/Card";
 import MovieList from "../../components/MovieList/MovieList";
 
-import Cover1 from "../../assets/covers/cover1.png";
-import Cover2 from "../../assets/covers/cover2.png";
-import Cover3 from "../../assets/covers/cover3.png";
-
-import Cover4 from "../../assets/covers/cover4.png";
-import Cover5 from "../../assets/covers/cover5.png";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { getAllMoviesAdmin } from "../../services/adminAction";
 // import Carousel from "../components/Carousel";
-
-const filmData = [
-  {
-    id: 1,
-    coverImage: Cover1,
-    rating: "8.6",
-    name: "Red Display",
-    genre: ["Comedy", "Action"],
-  },
-  {
-    id: 2,
-    coverImage: Cover2,
-    rating: "8.6",
-    name: "Red Display",
-    genre: ["Comedy", "Action"],
-  },
-  {
-    id: 3,
-    coverImage: Cover3,
-    rating: "8.6",
-    name: "Red Display",
-    genre: ["Comedy", "Action"],
-  },
-  {
-    id: 4,
-    coverImage: Cover4,
-    rating: "8.6",
-    name: "Red Display",
-    genre: ["Comedy", "Action"],
-  },
-  {
-    id: 5,
-    coverImage: Cover5,
-    rating: "8.6",
-    name: "Filmora",
-    genre: ["Comedy", "Action"],
-  },
-];
-
+import { useEffect, useState } from "react";
 const Home = () => {
+  const [movieData, setMovieData] = useState([]);
+  useEffect(() => {
+    getAllMoviesAdmin({ accepted: true })
+      .then((response) => {
+        console.log(response.data, "data");
+        setMovieData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <Navbar />
       <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
+        {/* <Carousel /> */}
         <div>
-          <MovieList title="8G Live Original Show" movieData={filmData} />
-          <MovieList title="8G - Recently added" movieData={filmData} />
+          <MovieList title="8G Live Original Show" movieData={movieData} />
+          {/* <MovieList title="8G - Recently added" movieData={filmData} />
 
           <MovieList title="Continue Watching show" movieData={filmData} />
 
@@ -74,7 +43,7 @@ const Home = () => {
             movieData={filmData}
           />
 
-          <MovieList title="Most popular" movieData={filmData} />
+        <MovieList title="Most popular" movieData={filmData} /> */}
         </div>
       </div>
       <Footer />
