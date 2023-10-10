@@ -13,6 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -45,6 +47,7 @@ export default function SimpleContainer() {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
       <Container maxWidth="md">
         <CssBaseline />
         <Box sx={{ height: "100vh", textAlign: "center" }}>
@@ -208,6 +211,7 @@ export default function SimpleContainer() {
           </Box>
         </Box>
       </Container>
+      <Footer />
     </React.Fragment>
   );
 }

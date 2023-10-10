@@ -55,11 +55,11 @@ export default function SignUp() {
   const { register, handleSubmit, formState, reset } = form;
   const { errors, isSubmitSuccessful } = formState;
 
-  // useEffect(() => {
-  //   if (isSubmitSuccessful) {
-  //     reset();
-  //   }
-  // }, [isSubmitSuccessful, reset]);
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
   const onSubmit = (data) => {
     const newData = {
       username: data.firstName + " " + data.lastName,
@@ -292,7 +292,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/user/login">
+                <Link to="/login">
                   <Typography
                     sx={{ textDecoration: "underline" }}
                     style={{ color: "rgb(187, 138, 51)" }}

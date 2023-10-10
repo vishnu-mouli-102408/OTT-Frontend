@@ -7,6 +7,8 @@ import Cover3 from "../../assets/covers/cover3.png";
 
 import Cover4 from "../../assets/covers/cover4.png";
 import Cover5 from "../../assets/covers/cover5.png";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 // import Carousel from "../components/Carousel";
 
 const filmData = [
@@ -49,28 +51,34 @@ const filmData = [
 
 const Home = () => {
   return (
-    <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
-      {/* <Carousel /> */}
-      <div>
-        <MovieList title="8G Live Original Show" movieData={filmData} />
-        <MovieList title="8G - Recently added" movieData={filmData} />
+    <>
+      <Navbar />
+      <div style={{ paddingLeft: "25px", paddingRight: "25px" }}>
+        <div>
+          <MovieList title="8G Live Original Show" movieData={filmData} />
+          <MovieList title="8G - Recently added" movieData={filmData} />
 
-        <MovieList title="Continue Watching show" movieData={filmData} />
+          <MovieList title="Continue Watching show" movieData={filmData} />
 
-        <MovieList title="Top 10 web show in India" movieData={filmData} />
+          <MovieList title="Top 10 web show in India" movieData={filmData} />
 
-        <MovieList title="8G-Top rated TV shows on IMDb" movieData={filmData} />
-        <MovieList title="Sci-fi series" movieData={filmData} />
+          <MovieList
+            title="8G-Top rated TV shows on IMDb"
+            movieData={filmData}
+          />
+          <MovieList title="Sci-fi series" movieData={filmData} />
 
-        <MovieList title="8G-Because you watched" movieData={filmData} />
-        <MovieList
-          title="Filmfare OTT Award Winners Shows"
-          movieData={filmData}
-        />
+          <MovieList title="8G-Because you watched" movieData={filmData} />
+          <MovieList
+            title="Filmfare OTT Award Winners Shows"
+            movieData={filmData}
+          />
 
-        <MovieList title="Most popular" movieData={filmData} />
+          <MovieList title="Most popular" movieData={filmData} />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
