@@ -195,44 +195,14 @@ const AddMovie = () => {
                   </Grid>
                 </Grid>
                 <Grid container spacing={2} justifyContent="center">
-                  <Grid item xs={12} sm={6}>
-                    <Button
-                      size="large"
-                      component="label"
-                      variant="outlined"
-                      startIcon={<CloudUploadIcon />}
-                      fullWidth
-                      sx={{ height: 100, marginTop: 4 }}
-                      style={{
-                        borderRadius: "6px",
-                        backgroundColor: "transparent",
-                        fontSize: "14px",
-                        color: "#fff",
-                        textTransform: "uppercase",
-                        border: "2px solid #bb8a33",
-                      }}
-                    >
-                      Drop Your Image Here
-                      <VisuallyHiddenInput type="file" />
-                    </Button>
-                    <Typography
-                      component="h4"
-                      variant="subtitle1"
-                      color="white"
-                      align="center"
-                      gutterBottom
-                    >
-                      {""}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12}>
                     <Button
                       size="large"
                       component="label"
                       variant="outlined"
                       fullWidth
                       startIcon={<CloudUploadIcon />}
-                      sx={{ height: 100, marginTop: 4 }}
+                      sx={{ height: 100, marginTop: 4, marginBottom: 2 }}
                       style={{
                         borderRadius: "6px",
                         backgroundColor: "transparent",
@@ -340,7 +310,7 @@ const AddMovie = () => {
                       color="white"
                       align="center"
                     >
-                      {videoFile.name}
+                      {videoFile?.name}
                     </Typography>
                   </Grid>
                 </Grid>
