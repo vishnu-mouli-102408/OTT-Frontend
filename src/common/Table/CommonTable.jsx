@@ -12,29 +12,29 @@ import {
   TablePagination,
   Button,
 } from "@mui/material";
+import displaySnackbar from "./Snackbar/Snackbar";
 
 function CommonTable({
   columns,
-  apiEndpoint,
+  api,
   pageSize = 5,
   initialPage = 0,
   action,
   actionButtonHandler,
-  dataGiven = [],
+  apiProps,
+  headers,
 }) {
-  const [data, setData] = useState(dataGiven);
+  const [data, setData] = useState([]);
   const [page, setPage] = useState(initialPage);
   const [rowsPerPage, setRowsPerPage] = useState(pageSize);
   const [totalItems, setTotalItems] = useState(0);
 
-  //   useEffect(() => {
-  //     fetch(`${apiEndpoint}?page=${page + 1}&pageSize=${rowsPerPage}`)
-  //       .then((response) => response.json())
-  //       .then((result) => {
-  //         setData(result.slice(1, 10));
-  //         setTotalItems(result.length);
-  //       });
-  //   }, [apiEndpoint, page, rowsPerPage]);
+  useEffect(() => {
+    api.view(apiProps, headers).then((res) => {
+      setData(res.data);
+      displaySnackbar({ message: "Succefully", type: "success" });
+    });
+  }, [page, rowsPerPage]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -66,45 +66,60 @@ function CommonTable({
               ))}
             </TableRow>
           </TableHead>
-          <TableBody sx={{ background: "#000" }}>
-            {data.map((row) => (
-              <TableRow key={row.id} className="commonTabRow">
-                {columns.map((column) =>
-                  column.id === "action" ? (
-                    <TableCell
-                      className="flex-row"
-                      style={{ color: "#ffffff" }}
-                    >
-                      {action.map((item) => {
-                        return (
-                          <Button
-                            variant="outlined"
-                            className={`actionItem-margin ${item.class}`}
-                            onClick={() =>
-                              actionButtonHandler(item.action, row)
-                            }
-                          >
-                            {item.action}
-                          </Button>
-                        );
-                      })}
-                    </TableCell>
-                  ) : column.format ? (
-                    <TableCell className="tableRow" key={column.field}>
-                      {column.format(row[column.id], row)}
-                    </TableCell>
-                  ) : (
-                    <TableCell
-                      className="tableRow"
-                      key={column.field}
-                      style={{ color: "#ffffff" }}
-                    >
-                      {row[column.id]}
-                    </TableCell>
-                  )
-                )}
-              </TableRow>
-            ))}
+          <TableBody sx={{ background: "#000", width: "100%" }}>
+            {true ? (
+              data.map((row) => (
+                <TableRow key={row.id} className="commonTabRow">
+                  {columns.map((column) =>
+                    column.id === "action" ? (
+                      <TableCell
+                        className="flex-row"
+                        style={{ color: "#ffffff" }}
+                      >
+                        {action.map((item) => {
+                          return (
+                            <Button
+                              variant="outlined"
+                              className={`actionItem-margin ${item.class}`}
+                              onClick={() =>
+                                actionButtonHandler(item.action, row)
+                              }
+                            >
+                              {item.action}
+                            </Button>
+                          );
+                        })}
+                      </TableCell>
+                    ) : column.format ? (
+                      <TableCell className="tableCell" key={column.field}>
+                        {column.format(row[column.id], row)}
+                      </TableCell>
+                    ) : (
+                      <TableCell
+                        className="tableCell"
+                        key={column.field}
+                        style={{ color: "#ffffff" }}
+                      >
+                        {row[column.id] || "Test"}
+                      </TableCell>
+                    )
+                  )}
+                </TableRow>
+              ))
+            ) : (
+              <div
+                style={{
+                  color: "#black",
+                  textAlign: "center",
+                  width: "100%",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  background: "#ffffff",
+                }}
+              >
+                No data Found
+              </div>
+            )}
           </TableBody>
         </Table>
       </TableContainer>

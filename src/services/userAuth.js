@@ -15,6 +15,7 @@ export const userLogin = (data) => {
     axios
       .post(`${DEV_API}/api/v1/login`, data)
       .then((response) => {
+        console.log(response);
         resolve(response);
       })
       .catch((err) => reject(err));

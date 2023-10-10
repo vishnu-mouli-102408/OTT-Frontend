@@ -39,6 +39,7 @@ import TabsItem from "./pages/Distributor/TabsItem.jsx";
 import Privacy from "./pages/Privacy/Privacy.jsx";
 import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
 import "./services/userAuth.js";
+import MovieCountAdmin from "./pages/SuperAdmin/MovieDetails.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -124,7 +125,7 @@ const appRouter = createBrowserRouter([
       <div style={{ height: "90vh" }} className="flex-row">
         <Sidebar SidebarData={adminSidebardata} />
         <div style={{ overflow: "auto", width: "100%" }}>
-          <MovieCount />
+          <MovieCountAdmin />
         </div>
       </div>
     ),

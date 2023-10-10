@@ -56,10 +56,10 @@ export default function TabsItem() {
           </TabList>
         </Box>
         <TabPanel value="1">
-          <MovieCount />
+          <MovieCount accepted />
         </TabPanel>
         <TabPanel value="2">
-          <MovieCount />
+          <MovieCount rejected />
         </TabPanel>
         <TabPanel value="3">
           <MovieCount />

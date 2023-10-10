@@ -55,11 +55,11 @@ export default function SignUp() {
   const { register, handleSubmit, formState, reset } = form;
   const { errors, isSubmitSuccessful } = formState;
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-  }, [isSubmitSuccessful, reset]);
+  // useEffect(() => {
+  //   if (isSubmitSuccessful) {
+  //     reset();
+  //   }
+  // }, [isSubmitSuccessful, reset]);
   const onSubmit = (data) => {
     const newData = {
       username: data.firstName + " " + data.lastName,
@@ -237,7 +237,7 @@ export default function SignUp() {
                       label="User"
                     />
                     <FormControlLabel
-                      value="admin"
+                      value="superAdmin"
                       control={<Radio />}
                       label="Admin"
                     />
