@@ -6,7 +6,7 @@ const MovieList = ({ title, movieData }) => {
   return (
     <div>
       <h1 className="text-4xl text-white my-3 font-bold">{title}</h1>
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2 justify-center">
         {movieData?.map((film) => (
           <Card movie={film} />
         ))}

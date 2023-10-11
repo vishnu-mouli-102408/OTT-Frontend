@@ -10,15 +10,18 @@ import Snackbar from "../../common/Table/Snackbar/Snackbar";
 // import KeyIcon from "@mui/icons-material/Key";
 const OTPScreen = () => {
   const [otp, setOtp] = useState("");
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState("");
   const navigate = useNavigate();
   // const location = useLocation();
 
   const from =
-    localStorage.getItem("role") == "user"
+    location?.state?.from?.pathname ||
+    (localStorage.getItem("role") == "user"
       ? "/"
       : localStorage.getItem("role") == "distributor"
       ? "/distributor"
-      : "/admin";
+      : "/admin");
 
   const userState = useSelector((state) => state.user);
   const handleOTP = () => {
@@ -26,10 +29,14 @@ const OTPScreen = () => {
     verifyOTP({ otp, secret: userState.secretCode })
       .then((res) => {
         console.log(res);
+        setMessage("OTP Validation Successfull");
+        setType("success");
         // alert("valid otp");
         navigate(from, { replace: true });
       })
       .catch(() => {
+        setMessage("OTP Validation Failed. Please try again.");
+        setType("error");
         // alert("invalid otp");
       });
   };
@@ -91,17 +98,14 @@ const OTPScreen = () => {
         <Button variant="outlined" className="resendbutton">
           Resend Code
         </Button>
-        <Button onClick={() => handleOTP()}>
-          <Snackbar />
-        </Button>
-        {/* <Button
+        <Button
           color="primary"
           variant="contained"
           className="signinBtn"
           onClick={() => handleOTP()}
         >
-          Sign In
-        </Button> */}
+          <Snackbar message={message} type={type} name="Sign In" />
+        </Button>
       </Paper>
     </div>
   );

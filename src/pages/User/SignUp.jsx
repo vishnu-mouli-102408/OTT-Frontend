@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -13,6 +14,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import Snackbar from "../../common/Table/Snackbar/Snackbar";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -44,6 +46,8 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [selectedRole, setSelectedRole] = useState("user"); // Default selected role is 'user'
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState("");
 
   const handleRoleChange = (event) => {
     setSelectedRole(event.target.value);
@@ -51,6 +55,7 @@ export default function SignUp() {
 
   const form = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState, reset } = form;
   const { errors, isSubmitSuccessful } = formState;
@@ -74,10 +79,16 @@ export default function SignUp() {
     dispatch(setUserRoles(selectedRole));
     userRegistration(newData)
       .then((res) => {
-        // navigate('/signin');
+        setMessage("Registration Successfull");
+        setType("success");
+        // navigate("/login");
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage("Registration Failed. Please try again.");
+        setType("error");
+        console.log(err);
+      });
   };
 
   return (
@@ -276,7 +287,6 @@ export default function SignUp() {
             </FormControl>
             <Button
               type="submit"
-              //   disabled={!isDirty || !isValid}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -289,7 +299,7 @@ export default function SignUp() {
                 border: "2px solid #bb8a33",
               }}
             >
-              Sign Up
+              <Snackbar message={message} type={type} name="Sign Up" />
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
